@@ -21,8 +21,8 @@ measurements_conf = [['power'], ['active']]
 DEFAULT_TZ = 'Europe/Berlin'
 
 # Analyzed time period
-DEFAULT_START_DATE = Timestamp('2017-10-21 00:00:00', freq='MS')
-DEFAULT_END_DATE = Timestamp('2018-01-18 23:59:59', freq='MS')
+DEFAULT_START_DATE = Timestamp('2017-10-21 00:00:00')
+DEFAULT_END_DATE = Timestamp('2018-01-18 23:59:59')
 
 # channels
 channels = [24, 26, 27, 28, 35, 51, 52, 53, 59]
