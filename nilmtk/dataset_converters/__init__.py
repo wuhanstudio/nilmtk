@@ -13,3 +13,4 @@ from .smart.convert_smart import convert_smart
 from .caxe.convert_caxe import convert_caxe
 from .ideal.convert_ideal import convert_ideal
 from .hipe.convert_hipe import convert_hipe
+from .deddiag import convert_deddiag
