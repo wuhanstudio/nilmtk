@@ -35,7 +35,10 @@ def convert_hipe(hipe_path, output_filename, format="HDF"):
     _convert(hipe_path, datastore,
              _hipe_measurement_mapping_func, "Europe/Berlin")
 
-    metadata_path = "metadata"
+    metadata_path = join(get_module_directory(),
+                              'dataset_converters',
+                              'hipe',
+                              'metadata')
 
     save_yaml_to_datastore(metadata_path, datastore)
 
@@ -69,7 +72,7 @@ def _convert(input_path,
 
     check_directory_exists(input_path)
 
-    print("Loading factory 1...", end="... ")
+    print("Loading factory 1...", end="... \n")
     chans = _find_all_channels(input_path, meter_to_machine)
     for chan_id, filename in chans.items():
         print(chan_id, end=" ")
@@ -96,7 +99,7 @@ def _load_csv(filename, measurements, drop_duplicates=False, sort_index=False):
     print(f"Processing {filename}")
     df = pd.read_csv(filename, usecols=["SensorDateTime", "P_kW"], index_col=0)
 
-    df.index = pd.to_datetime(df.index, utc=True)
+    df.index = pd.to_datetime(df.index, utc=True, format='mixed')
     df = df.tz_convert("Europe/Berlin")
     df["P_kW"] *= 1000  # convert kW to W
 
