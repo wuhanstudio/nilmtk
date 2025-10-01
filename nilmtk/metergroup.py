@@ -1093,7 +1093,7 @@ class MeterGroup(Electric):
                 print("   {:.2%}".format(prop))
         
         if all_nan:
-            proportion = np.NaN
+            proportion = np.nan
         return proportion
 
     def available_ac_types(self, physical_quantity):
@@ -1718,7 +1718,7 @@ class MeterGroup(Electric):
             series['proportion_uptime'] = (mains_uptime.total_seconds() /
                                            timeframe.timedelta.total_seconds())
         except ZeroDivisionError:
-            series['proportion_uptime'] = np.NaN
+            series['proportion_uptime'] = np.nan
         series['average_mains_energy_per_day'] = self.mains().average_energy_per_period()
 
         return series
@@ -1787,7 +1787,7 @@ def combine_chunks_from_generators(index, columns, meters, kwargs):
     # See http://stackoverflow.com/a/27526721/732596
 
     DTYPE = np.float32
-    cumulator = pd.DataFrame(np.NaN, index=index, columns=columns, dtype=DTYPE)
+    cumulator = pd.DataFrame(np.nan, index=index, columns=columns, dtype=DTYPE)
     cumulator_arr = cumulator.values
     columns_to_average_counter = pd.DataFrame(dtype=np.uint16)
     timeframe = None
@@ -1827,7 +1827,7 @@ def combine_chunks_from_generators(index, columns, meters, kwargs):
             where_both_are_nan = np.isnan(cumulator_col) & np.isnan(aligned)
             np.nansum([cumulator_col, aligned], axis=0, out=cumulator_col, 
                       dtype=DTYPE)
-            cumulator_col[where_both_are_nan] = np.NaN
+            cumulator_col[where_both_are_nan] = np.nan
             del aligned
             del where_both_are_nan
             gc.collect()
